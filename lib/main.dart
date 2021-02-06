@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'demo/intro/intro.dart';
 import 'routed_app.dart';
 
 void main() {
+  setPathUrlStrategy();
+
   if (kReleaseMode) {
     runApp(RoutedApp());
   } else {
