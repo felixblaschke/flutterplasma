@@ -1,4 +1,3 @@
-import 'package:browser_detector/browser_detector.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -27,7 +26,7 @@ class DemoScreen extends StatefulWidget {
 }
 
 class _DemoScreenState extends State<DemoScreen> {
-  final AudioPlayer _controller = AudioPlayer('assets/assets/music.mp3');
+  final AudioPlayer _audioPlayer = AudioPlayer('assets/assets/music.mp3');
 
   var control = CustomAnimationControl.STOP;
 
@@ -52,11 +51,11 @@ class _DemoScreenState extends State<DemoScreen> {
 
   void _start(Function shatterFn) async {
     if (kIsWeb) {
-      await _controller.play();
+      await _audioPlayer.play();
 
       while (true) {
-        var position = await _controller.position;
-        if (position > 0.seconds || BrowserDetector().engine.isWebkit) {
+        var position = await _audioPlayer.position;
+        if (position > 0.seconds) {
           setState(() => control = CustomAnimationControl.PLAY_FROM_START);
           shatterFn();
           break;
@@ -100,7 +99,7 @@ class _DemoScreenState extends State<DemoScreen> {
         },
         animationStatusListener: (status) {
           if (status == AnimationStatus.completed) {
-            _controller.pause();
+            _audioPlayer.pause();
           }
         },
       ),
