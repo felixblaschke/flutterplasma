@@ -144,23 +144,38 @@ TimelineTween<_P> _createTween(BoxConstraints constraints) {
       .animate(_P.sceneOpacity, tween: 0.0.tweenTo(1.0));
 
   var t1 = tween
-      .addScene(end: 1738.milliseconds, duration: 600.milliseconds)
+      .addScene(
+        end: 1738.milliseconds,
+        duration: 600.milliseconds,
+        curve: Curves.easeOutCubic,
+      )
       .animate(_P.t1fade, tween: (0.0).tweenTo(1.0));
 
   var t2 = t1
-      .addSubsequentScene(delay: 300.milliseconds, duration: 600.milliseconds)
+      .addSubsequentScene(
+        delay: 300.milliseconds,
+        duration: 600.milliseconds,
+        curve: Curves.easeOutCubic,
+      )
       .animate(_P.t2fade, tween: (0.0).tweenTo(1.0));
 
   var t3 = t2
-      .addSubsequentScene(delay: 300.milliseconds, duration: 600.milliseconds)
+      .addSubsequentScene(
+        delay: 300.milliseconds,
+        duration: 600.milliseconds,
+        curve: Curves.easeOutCubic,
+      )
       .animate(_P.t3fade, tween: (0.0).tweenTo(1.0));
 
   tween
       .addScene(
           begin: (0.75 * MUSIC_UNIT_MS).round().milliseconds,
           end: (1.75 * MUSIC_UNIT_MS).round().milliseconds)
-      .animate(_P.textRotate,
-          tween: 0.0.tweenTo(30 * 2 * pi).curved(Curves.easeInExpo));
+      .animate(
+        _P.textRotate,
+        tween: 0.0.tweenTo(30 * 2 * pi),
+        curve: _CustomExponentialCurve(),
+      );
 
   tween
       .addScene(
@@ -180,4 +195,21 @@ TimelineTween<_P> _createTween(BoxConstraints constraints) {
       begin: (2 * MUSIC_UNIT_MS).milliseconds, duration: 1.milliseconds);
 
   return tween;
+}
+
+/// A custom curve that combines [Curves.easeIn] and [Curves.easeInExpo].
+/// This is to prevent the animation to "jump" to motion at the very start
+/// when the animation takes a long time.
+class _CustomExponentialCurve extends Curve {
+  const _CustomExponentialCurve();
+
+  @override
+  double transformInternal(double t) {
+    var scale = 1.0;
+    const easeInPortion  = 0.6;
+    if (t < easeInPortion) {
+      scale = Curves.easeInOut.transform(t * (1 / easeInPortion));
+    }
+    return Curves.easeInExpo.transformInternal(t) * scale;
+  }
 }
