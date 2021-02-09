@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
-import 'package:video_player/video_player.dart';
 
 import 'effects/shatter.dart';
 import 'fancy_plasma1/fancy_plasma1.dart';
@@ -14,6 +13,8 @@ import 'outro/outro.dart';
 import 'sky/sky.dart';
 import 'stars/stars.dart';
 import 'startpage/start_page.dart';
+
+import 'audio.dart';
 
 class DemoScreen extends StatefulWidget {
   final VoidCallback onComplete;
@@ -26,7 +27,7 @@ class DemoScreen extends StatefulWidget {
 }
 
 class _DemoScreenState extends State<DemoScreen> {
-  VideoPlayerController _controller;
+  final AudioPlayer _controller = AudioPlayer('assets/assets/music.mp3');
 
   var control = CustomAnimationControl.STOP;
 
@@ -45,11 +46,6 @@ class _DemoScreenState extends State<DemoScreen> {
       Container(),
       Outro(onComplete: widget.onComplete),
     ];
-
-    if (kIsWeb) {
-      _controller = VideoPlayerController.asset('assets/music.mp3');
-      _controller.initialize();
-    }
 
     super.initState();
   }
