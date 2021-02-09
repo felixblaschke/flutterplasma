@@ -9,7 +9,7 @@ import 'routed_app.dart';
 void main() {
   setPathUrlStrategy();
 
-  if (kReleaseMode) {
+  if (kReleaseMode || kProfileMode) {
     runApp(RoutedApp());
   } else {
     runApp(DevApp());
