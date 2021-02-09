@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
+import '../caching_builder.dart';
 import '../intro/large_text.dart';
 
 class Outro extends StatelessWidget {
@@ -62,26 +63,33 @@ class Outro extends StatelessWidget {
       _buildText('created by', 'Felix Blaschke', fontSize),
       Opacity(
         opacity: value.get(_P.opacityOther),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildSpacer(fontSize),
-            _buildText(
-                'directed by', 'Felix Blaschke\nMandy Blaschke', fontSize),
-            _buildSpacer(fontSize),
-            _buildText('Artwork by', 'Mandy Blaschke', fontSize),
-            _buildSpacer(fontSize),
-            _buildText('Made with', 'Flutter SDK', fontSize),
-            _buildSpacer(fontSize),
-            _buildText('animation package used', 'simple_animations', fontSize),
-            _buildSpacer(fontSize),
-            _buildText('Special thanks to', 'The Flutter Team', fontSize),
-            Container(
-              height: fontSize * 0.2,
-            ),
-            LargeText('for creating this awesome technology.',
-                textSize: fontSize * 0.43),
-          ],
+        child: CachingBuilder<double>(
+          cacheKey: fontSize,
+          builder: (context) {
+            return RepaintBoundary(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildSpacer(fontSize),
+                  _buildText(
+                      'directed by', 'Felix Blaschke\nMandy Blaschke', fontSize),
+                  _buildSpacer(fontSize),
+                  _buildText('Artwork by', 'Mandy Blaschke', fontSize),
+                  _buildSpacer(fontSize),
+                  _buildText('Made with', 'Flutter SDK', fontSize),
+                  _buildSpacer(fontSize),
+                  _buildText('animation package used', 'simple_animations', fontSize),
+                  _buildSpacer(fontSize),
+                  _buildText('Special thanks to', 'The Flutter Team', fontSize),
+                  Container(
+                    height: fontSize * 0.2,
+                  ),
+                  LargeText('for creating this awesome technology.',
+                      textSize: fontSize * 0.43),
+                ],
+              ),
+            );
+          },
         ),
       )
     ];

@@ -11,6 +11,7 @@ import '../demo/layout/layout_b.dart';
 import '../demo/layout/layout_c.dart';
 import '../demo/layout/layout_d.dart';
 import '../demo/layout/layout_wall.dart';
+import '../demo/outro/outro.dart';
 import '../demo/sky/dash.dart';
 import '../demo/sky/sky.dart';
 import '../demo/stars/stars.dart';
@@ -140,6 +141,7 @@ var WIDGETS = {
   'Sky': () => Sky(),
   'Dash': () => DashAnimation(),
   'Stars': () => Stars(),
+  'Outro': () => Outro(),
 };
 
 Widget _square(Widget child) => AspectRatio(
