@@ -3,6 +3,7 @@ import 'package:supercharged/supercharged.dart';
 
 import 'demo/demo_screen.dart';
 import 'showroom/show_room.dart';
+import 'widget_warmup.dart';
 
 class RoutedApp extends StatefulWidget {
   @override
@@ -118,39 +119,41 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
 
   @override
   Widget build(BuildContext context) {
-    return Navigator(
-      key: navigatorKey,
-      pages: [
-        if (showDemo)
-          MaterialPage<DemoScreen>(
-            key: ValueKey('Demo'),
-            child: DemoScreen(
-              showCredits: demoShowCredits,
-              onComplete: _handleDemoCompleted,
+    return WidgetWarmup(
+      child: Navigator(
+        key: navigatorKey,
+        pages: [
+          if (showDemo)
+            MaterialPage<DemoScreen>(
+              key: ValueKey('Demo'),
+              child: DemoScreen(
+                showCredits: demoShowCredits,
+                onComplete: _handleDemoCompleted,
+              ),
             ),
-          ),
-        if (showShowroom)
-          MaterialPage<Scaffold>(
-            key: ValueKey('ShowRoom'),
-            child: Scaffold(
-                body: ShowRoom(
-                    index: showroomIndex,
-                    onIndexChange: _handleShowroomIndexChange)),
-          ),
-        if (showUnknown)
-          MaterialPage<Scaffold>(
-            key: ValueKey('Unknown'),
-            child: Scaffold(body: Center(child: Text('404'))),
-          )
-      ],
-      onPopPage: (route, dynamic result) {
-        if (!route.didPop(result)) {
-          return false;
-        }
+          if (showShowroom)
+            MaterialPage<Scaffold>(
+              key: ValueKey('ShowRoom'),
+              child: Scaffold(
+                  body: ShowRoom(
+                      index: showroomIndex,
+                      onIndexChange: _handleShowroomIndexChange)),
+            ),
+          if (showUnknown)
+            MaterialPage<Scaffold>(
+              key: ValueKey('Unknown'),
+              child: Scaffold(body: Center(child: Text('404'))),
+            )
+        ],
+        onPopPage: (route, dynamic result) {
+          if (!route.didPop(result)) {
+            return false;
+          }
 
-        notifyListeners();
-        return true;
-      },
+          notifyListeners();
+          return true;
+        },
+      ),
     );
   }
 
