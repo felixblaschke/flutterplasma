@@ -76,7 +76,7 @@ class Outro extends StatelessWidget {
                   _buildSpacer(fontSize),
                   _buildText('Artwork by', 'Mandy Blaschke', fontSize),
                   _buildSpacer(fontSize),
-                  _buildText('Made with', 'Flutter SDK', fontSize),
+                  _buildText('Made with', 'Flutter', fontSize),
                   _buildSpacer(fontSize),
                   _buildText('animation package used', 'simple_animations', fontSize),
                   _buildSpacer(fontSize),
