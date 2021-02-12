@@ -118,7 +118,7 @@ class LayoutB extends StatelessWidget {
   }
 
   Container _buildContentContainer(double gap,
-      {Color color, double heightScale}) {
+      {Color? color, double? heightScale}) {
     return Container(
       margin: EdgeInsets.only(bottom: gap),
       constraints:

@@ -5,11 +5,12 @@ import 'package:supercharged/supercharged.dart';
 import 'gesture_detector_with_click_hover.dart';
 
 class PropertySelect extends StatelessWidget {
-  final Function(String) onChanged;
+  final void Function(String?) onChanged;
   final String value;
   final List<String> options;
 
-  PropertySelect({this.onChanged, this.value, this.options});
+  PropertySelect(
+      {required this.onChanged, required this.value, required this.options});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class MyIconButton extends StatelessWidget {
   final IconData icon;
   final void Function() onPressed;
 
-  MyIconButton({this.icon, this.onPressed});
+  MyIconButton({required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

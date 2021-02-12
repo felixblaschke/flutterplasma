@@ -6,7 +6,7 @@ import 'showroom/show_room.dart';
 class WidgetWarmup extends StatefulWidget {
   final Widget child;
 
-  WidgetWarmup({this.child});
+  WidgetWarmup({required this.child});
 
   @override
   _WidgetWarmupState createState() => _WidgetWarmupState();
@@ -18,7 +18,7 @@ class _WidgetWarmupState extends State<WidgetWarmup> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _afterRender(context));
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _afterRender(context));
   }
 
   @override

@@ -192,7 +192,7 @@ class LayoutC extends StatelessWidget {
     );
   }
 
-  Widget _buildTextLine(double gap, {double width}) {
+  Widget _buildTextLine(double gap, {double? width}) {
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
         width: constraints.maxWidth * (width ?? 1.0),

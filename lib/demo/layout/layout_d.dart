@@ -81,7 +81,10 @@ class LayoutD extends StatelessWidget {
   }
 
   Positioned _buildContainer(
-      {double gap, double size, double left, double top}) {
+      {required double gap,
+      required double size,
+      required double left,
+      required double top}) {
     return Positioned(
         left: left,
         top: top,
@@ -102,7 +105,8 @@ class LayoutD extends StatelessWidget {
         ));
   }
 
-  Positioned _buildAnimatedContainer({double gap, TimelineValue<_P> value}) {
+  Positioned _buildAnimatedContainer(
+      {required double gap, required TimelineValue<_P> value}) {
     var videoOpacity = value.get<double>(_P.videoOpacity);
 
     return Positioned(

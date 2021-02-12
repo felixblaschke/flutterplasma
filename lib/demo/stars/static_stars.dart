@@ -20,7 +20,7 @@ class StaticStars extends StatelessWidget {
 class _Painter extends CustomPainter {
   final int n;
 
-  _Painter({this.n});
+  _Painter({required this.n});
 
   @override
   void paint(Canvas canvas, Size size) {

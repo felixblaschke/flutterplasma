@@ -7,12 +7,10 @@ class AudioPlayerImpl implements AudioPlayer {
   final String src;
 
   @override
-  Future<void> pause() async {
-  }
+  Future<void> pause() async {}
 
   @override
-  Future<void> play() async {
-  }
+  Future<void> play() async {}
 
   @override
   Duration get position => Duration.zero;

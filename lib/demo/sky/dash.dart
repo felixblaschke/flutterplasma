@@ -19,7 +19,7 @@ class DashAnimation extends StatelessWidget {
 class Dash extends StatelessWidget {
   final double value;
 
-  Dash({this.value});
+  Dash({required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class Dash extends StatelessWidget {
 class DashPainter extends CustomPainter {
   final double value;
 
-  DashPainter({this.value});
+  DashPainter({required this.value});
 
   @override
   void paint(Canvas canvas, Size size) {

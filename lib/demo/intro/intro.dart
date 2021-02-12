@@ -139,7 +139,7 @@ enum _P {
 TimelineTween<_P> _createTween(BoxConstraints constraints) {
   var tween = TimelineTween<_P>();
 
-  var fadeIn = tween
+  tween
       .addScene(begin: 0.milliseconds, end: 800.milliseconds)
       .animate(_P.sceneOpacity, tween: 0.0.tweenTo(1.0));
 
@@ -159,7 +159,7 @@ TimelineTween<_P> _createTween(BoxConstraints constraints) {
       )
       .animate(_P.t2fade, tween: (0.0).tweenTo(1.0));
 
-  var t3 = t2
+  t2
       .addSubsequentScene(
         delay: 300.milliseconds,
         duration: 600.milliseconds,
@@ -206,7 +206,7 @@ class _CustomExponentialCurve extends Curve {
   @override
   double transformInternal(double t) {
     var scale = 1.0;
-    const easeInPortion  = 0.6;
+    const easeInPortion = 0.6;
     if (t < easeInPortion) {
       scale = Curves.easeInOut.transform(t * (1 / easeInPortion));
     }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
+import 'audio.dart';
 import 'effects/shatter.dart';
 import 'fancy_plasma1/fancy_plasma1.dart';
 import 'fancy_plasma2/fancy_plasma2.dart';
@@ -13,13 +14,11 @@ import 'sky/sky.dart';
 import 'stars/stars.dart';
 import 'startpage/start_page.dart';
 
-import 'audio.dart';
-
 class DemoScreen extends StatefulWidget {
   final VoidCallback onComplete;
   final bool showCredits;
 
-  DemoScreen({this.onComplete, this.showCredits});
+  DemoScreen({required this.onComplete, required this.showCredits});
 
   @override
   _DemoScreenState createState() => _DemoScreenState();
@@ -116,17 +115,17 @@ TimelineTween<_P> _createTween(bool withCredits) {
       .addScene(begin: 0.milliseconds, duration: 605.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(0));
 
-  var message = intro
+   intro
       .addSubsequentScene(duration: MUSIC_UNIT_MS.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(1));
 
-  var plasmas = tween
+   tween
       .addScene(
           begin: 13068.milliseconds,
           duration: (2 * MUSIC_UNIT_MS).round().milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(2));
 
-  var layoutWall = tween
+   tween
       .addScene(
           begin: 25414.milliseconds,
           duration: (2 * MUSIC_UNIT_MS).round().milliseconds)
@@ -146,16 +145,16 @@ TimelineTween<_P> _createTween(bool withCredits) {
       .addSubsequentScene(duration: MUSIC_UNIT_MS.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(6));
 
-  var dark = space
+  space
       .addSubsequentScene(duration: 2000.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(7));
 
   if (withCredits) {
-    var outro = tween
+     tween
         .addScene(begin: 66275.milliseconds, end: 91532.milliseconds)
         .animate(_P.widgetIndex, tween: ConstantTween<int>(8));
 
-    var end = tween.addScene(begin: 94.seconds, duration: 1.milliseconds);
+     tween.addScene(begin: 94.seconds, duration: 1.milliseconds);
   }
 
   return tween;
