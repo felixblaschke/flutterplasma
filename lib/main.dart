@@ -12,10 +12,12 @@ void main() {
   if (kReleaseMode || kProfileMode) {
     runApp(RoutedApp());
   } else {
-    runApp(DevApp());
+    runApp(RoutedApp());
   }
 }
 
+/// Can be used instead of RoutedApp to develop and test
+/// a single part of the application.
 class DevApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

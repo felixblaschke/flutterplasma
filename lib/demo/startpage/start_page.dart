@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supercharged/supercharged.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../showroom/gesture_detector_with_click_hover.dart';
 import '../intro/large_text.dart';
@@ -86,6 +87,17 @@ class StartPage extends StatelessWidget {
             onTap: pressedStart,
           ),
         ),
+        Spacer(),
+        Container(
+          alignment: Alignment.center,
+          child: GestureDetectorWithClickHover(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('View source code', style: link()),
+            ),
+            onTap: viewSourceCode,
+          ),
+        )
       ],
     );
   }
@@ -122,6 +134,13 @@ class StartPage extends StatelessWidget {
         ],
       ),
     ));
+  }
+
+  void viewSourceCode() async {
+    var url = 'https://github.com/felixblaschke/flutterplasma/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    }
   }
 }
 

@@ -16,6 +16,7 @@ dependencies:
   simple_animations: ^2.5.0
   pedantic: ^1.9.2
   url_strategy: ^0.1.1
+  url_launcher: ^5.7.10
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
