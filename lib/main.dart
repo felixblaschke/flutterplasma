@@ -6,7 +6,10 @@ import 'package:url_strategy/url_strategy.dart';
 import 'demo/intro/intro.dart';
 import 'routed_app.dart';
 
-void main() {
+import 'demo/sky/dash_painter.dart';
+
+void main() async {
+  await initializeDashPainter();
   setPathUrlStrategy();
 
   if (kReleaseMode || kProfileMode) {
