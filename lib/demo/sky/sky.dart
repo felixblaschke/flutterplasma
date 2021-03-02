@@ -23,7 +23,7 @@ class Sky extends StatelessWidget {
               children: [
                 Positioned.fill(child: SkyGradient()),
                 Positioned.fill(child: CloudsPlasma()),
-                if (otherDashes > 0) ..._otherDashes(otherDashes, constraints),
+                if (otherDashes > 0) Positioned.fill(child: OtherDashes(otherDashes)),
                 Positioned(
                   left: value.get<double>(_P.left1) * constraints.maxWidth,
                   top: value.get<double>(_P.top1) * constraints.maxHeight,
@@ -40,30 +40,21 @@ class Sky extends StatelessWidget {
           });
     });
   }
+}
 
-  List<Positioned> _otherDashes(double value, BoxConstraints constraints) {
-    var random = Random(18);
-    var randomAngle = Random(16);
+class OtherDashes extends StatelessWidget {
+  OtherDashes(this.otherDashes);
 
-    var dashes = <Positioned>[];
+  final double otherDashes;
 
-    0.until(20).forEach((n) {
-      var left = 0.0 + 1.0 * random.nextDouble() + (1 - value) * 0.3;
-      var top = 2.4 * (1 - value) - 1.2 + random.nextDouble();
-      var size = 0.14 + 0.08 * random.nextDouble() - value * 0.1;
-
-      dashes.add(Positioned(
-        left: left * constraints.maxWidth,
-        top: top * constraints.maxHeight,
-        width: size * constraints.maxWidth,
-        height: size * constraints.maxWidth,
-        child: Transform.rotate(
-            angle: 0.3 + 0.2 * randomAngle.nextDouble(),
-            child: DashAnimation()),
-      ));
-    });
-
-    return dashes;
+  @override
+  Widget build(BuildContext context) {
+    return MirrorAnimation<double>(
+        tween: 0.0.tweenTo(1.0),
+        duration: 300.milliseconds,
+        builder: (context, child, value) {
+          return CustomPaint(painter: MultiDashPainter(otherDashes, value));
+        });
   }
 }
 
