@@ -22,10 +22,12 @@ class Outro extends StatelessWidget {
         builder: (context, child, value) {
           return Stack(
             children: [
+              /* // Background effect disabled to improve performance
               Positioned.fill(
                   child: Opacity(
                       opacity: value.get(_P.opacityBackground),
                       child: _Background())),
+               */
               Positioned.fill(child: _buildScrollingText(value, fontSize)),
             ],
           );
