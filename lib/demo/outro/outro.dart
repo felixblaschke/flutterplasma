@@ -73,14 +73,15 @@ class Outro extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _buildSpacer(fontSize),
-                  _buildText(
-                      'directed by', 'Felix Blaschke\nMandy Blaschke', fontSize),
+                  _buildText('directed by', 'Felix Blaschke\nMandy Blaschke',
+                      fontSize),
                   _buildSpacer(fontSize),
                   _buildText('Artwork by', 'Mandy Blaschke', fontSize),
                   _buildSpacer(fontSize),
                   _buildText('Made with', 'Flutter', fontSize),
                   _buildSpacer(fontSize),
-                  _buildText('animation package used', 'simple_animations', fontSize),
+                  _buildText(
+                      'animation package used', 'simple_animations', fontSize),
                   _buildSpacer(fontSize),
                   _buildText('Special thanks to', 'The Flutter Team', fontSize),
                   Container(
@@ -155,6 +156,7 @@ class _Background extends StatelessWidget {
         backgroundBlendMode: BlendMode.srcOver,
       ),
       child: PlasmaRenderer(
+        particleType: ParticleType.atlas,
         type: PlasmaType.infinity,
         particles: 10,
         color: Color(0xd0010101),

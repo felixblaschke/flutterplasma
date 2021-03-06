@@ -22,6 +22,7 @@ class StarsBackground extends StatelessWidget {
         backgroundBlendMode: BlendMode.srcOver,
       ),
       child: PlasmaRenderer(
+        particleType: ParticleType.atlas,
         type: PlasmaType.infinity,
         particles: 10,
         color: Color(0x18c537cf),
@@ -35,6 +36,7 @@ class StarsBackground extends StatelessWidget {
         variation3: 0,
         rotation: 0,
         child: PlasmaRenderer(
+          particleType: ParticleType.atlas,
           type: PlasmaType.infinity,
           particles: 10,
           color: Color(0x06bababa),

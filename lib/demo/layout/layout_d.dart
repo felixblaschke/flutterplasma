@@ -135,6 +135,7 @@ class LayoutD extends StatelessWidget {
                           child: Opacity(
                             opacity: videoOpacity,
                             child: PlasmaRenderer(
+                              particleType: ParticleType.atlas,
                               type: PlasmaType.circle,
                               particles: 10,
                               color: grey1,

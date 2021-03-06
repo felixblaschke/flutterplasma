@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
+import 'audio.dart';
 import 'effects/shatter.dart';
 import 'fancy_plasma1/fancy_plasma1.dart';
 import 'fancy_plasma2/fancy_plasma2.dart';
@@ -12,8 +13,6 @@ import 'outro/outro.dart';
 import 'sky/sky.dart';
 import 'stars/stars.dart';
 import 'startpage/start_page.dart';
-
-import 'audio.dart';
 
 class DemoScreen extends StatefulWidget {
   final VoidCallback onComplete;

@@ -10,6 +10,7 @@ class OtherPlasma1 extends StatelessWidget {
         backgroundBlendMode: BlendMode.srcOver,
       ),
       child: PlasmaRenderer(
+        particleType: ParticleType.atlas,
         type: PlasmaType.infinity,
         particles: 10,
         color: Color(0xd0110101),

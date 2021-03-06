@@ -58,6 +58,7 @@ class Intro extends StatelessWidget {
         backgroundBlendMode: BlendMode.srcOver,
       ),
       child: PlasmaRenderer(
+        particleType: ParticleType.atlas,
         type: PlasmaType.infinity,
         particles: 10,
         color: Color(0x0dec2f0a),
@@ -206,7 +207,7 @@ class _CustomExponentialCurve extends Curve {
   @override
   double transformInternal(double t) {
     var scale = 1.0;
-    const easeInPortion  = 0.6;
+    const easeInPortion = 0.6;
     if (t < easeInPortion) {
       scale = Curves.easeInOut.transform(t * (1 / easeInPortion));
     }

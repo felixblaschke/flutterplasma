@@ -38,7 +38,7 @@ class StartPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SelectableText('Flutter Plasma', style: h1()),
+        SelectableText('Flutter Plasma (Atlas ParticleType)', style: h1()),
         Container(height: 24),
         SelectableText(
             'This demo shows the capabilities of Flutter in the web.',

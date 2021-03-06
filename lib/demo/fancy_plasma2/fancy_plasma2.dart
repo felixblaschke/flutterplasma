@@ -146,6 +146,7 @@ class PlasmaPart1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlasmaRenderer(
+      particleType: ParticleType.atlas,
       type: PlasmaType.infinity,
       particles: 6,
       color: Color(0x44e45a23),
@@ -166,6 +167,7 @@ class PlasmaPart2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlasmaRenderer(
+      particleType: ParticleType.atlas,
       type: PlasmaType.bubbles,
       particles: 23,
       color: Color(0x2963a6e1),
@@ -186,6 +188,7 @@ class PlasmaPart3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlasmaRenderer(
+      particleType: ParticleType.atlas,
       type: PlasmaType.infinity,
       particles: 10,
       color: Color(0x447be423),
@@ -206,6 +209,7 @@ class PlasmaPart4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlasmaRenderer(
+      particleType: ParticleType.atlas,
       type: PlasmaType.circle,
       particles: 10,
       color: Color(0x441290d5),

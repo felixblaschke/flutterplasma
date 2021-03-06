@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -23,7 +22,8 @@ class Sky extends StatelessWidget {
               children: [
                 Positioned.fill(child: SkyGradient()),
                 Positioned.fill(child: CloudsPlasma()),
-                if (otherDashes > 0) Positioned.fill(child: OtherDashes(otherDashes)),
+                if (otherDashes > 0)
+                  Positioned.fill(child: OtherDashes(otherDashes)),
                 Positioned(
                   left: value.get<double>(_P.left1) * constraints.maxWidth,
                   top: value.get<double>(_P.top1) * constraints.maxHeight,
@@ -151,6 +151,7 @@ class CloudsPlasma extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlasmaRenderer(
+      particleType: ParticleType.atlas,
       type: PlasmaType.bubbles,
       particles: 39,
       color: Color(0x44ffffff),
@@ -171,6 +172,7 @@ class ForegroundCloudsPlasma extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlasmaRenderer(
+      particleType: ParticleType.atlas,
       type: PlasmaType.bubbles,
       particles: 10,
       color: Color(0x66ffffff),

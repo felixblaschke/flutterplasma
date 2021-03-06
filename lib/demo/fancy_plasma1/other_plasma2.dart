@@ -22,6 +22,7 @@ class OtherPlasma2 extends StatelessWidget {
         backgroundBlendMode: BlendMode.srcOver,
       ),
       child: PlasmaRenderer(
+        particleType: ParticleType.atlas,
         type: PlasmaType.circle,
         particles: 10,
         color: Color(0x4423b9e4),
@@ -35,6 +36,7 @@ class OtherPlasma2 extends StatelessWidget {
         variation3: 0,
         rotation: 0,
         child: PlasmaRenderer(
+          particleType: ParticleType.atlas,
           type: PlasmaType.circle,
           particles: 10,
           color: Color(0x44b623e4),
@@ -48,6 +50,7 @@ class OtherPlasma2 extends StatelessWidget {
           variation3: 0,
           rotation: 0,
           child: PlasmaRenderer(
+            particleType: ParticleType.atlas,
             type: PlasmaType.circle,
             particles: 3,
             color: Color(0x4423c1e4),

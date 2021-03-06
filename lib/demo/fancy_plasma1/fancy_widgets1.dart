@@ -29,6 +29,7 @@ class FancyPlasmaWidget2 extends StatelessWidget {
         backgroundBlendMode: BlendMode.srcOver,
       ),
       child: PlasmaRenderer(
+        particleType: ParticleType.atlas,
         type: PlasmaType.infinity,
         particles: 20,
         color: color,
@@ -74,6 +75,7 @@ class FancyPlasmaWidget1 extends StatelessWidget {
         backgroundBlendMode: BlendMode.srcOver,
       ),
       child: PlasmaRenderer(
+        particleType: ParticleType.atlas,
         type: PlasmaType.infinity,
         particles: 10,
         color: color,

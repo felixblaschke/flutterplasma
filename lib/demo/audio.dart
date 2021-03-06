@@ -4,6 +4,8 @@ abstract class AudioPlayer {
   factory AudioPlayer(String src) => impl.AudioPlayerImpl(src);
 
   Future<void> play();
+
   Future<void> pause();
+
   Duration get position;
 }

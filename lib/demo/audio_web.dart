@@ -19,5 +19,6 @@ class AudioPlayerImpl implements AudioPlayer {
   }
 
   @override
-  Duration get position => Duration(milliseconds: (_audioElement.currentTime * 1000).toInt());
+  Duration get position =>
+      Duration(milliseconds: (_audioElement.currentTime * 1000).toInt());
 }
