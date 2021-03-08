@@ -22,12 +22,12 @@ class Outro extends StatelessWidget {
         builder: (context, child, value) {
           return Stack(
             children: [
-              /* // Background effect disabled to improve performance
+              // Background effect disabled to improve performance
               Positioned.fill(
                   child: Opacity(
                       opacity: value.get(_P.opacityBackground),
                       child: _Background())),
-               */
+
               Positioned.fill(child: _buildScrollingText(value, fontSize)),
             ],
           );
@@ -164,7 +164,7 @@ class _Background extends StatelessWidget {
         size: 0.87,
         speed: 4,
         offset: 0,
-        blendMode: BlendMode.darken,
+        blendMode: BlendMode.srcOver,
         variation1: 0,
         variation2: 0,
         variation3: 0,

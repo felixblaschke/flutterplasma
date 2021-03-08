@@ -18,7 +18,7 @@ class OtherPlasma1 extends StatelessWidget {
         size: 0.87,
         speed: 10,
         offset: 0,
-        blendMode: BlendMode.darken,
+        blendMode: BlendMode.srcOver,
         variation1: 0,
         variation2: 0,
         variation3: 0,
