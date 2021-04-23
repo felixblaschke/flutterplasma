@@ -16,6 +16,7 @@ class PropertySelect extends StatelessWidget {
       children: [
         DropdownButton<String>(
           value: value,
+          style: whiteRegular,
           dropdownColor: '#555555'.toColor(),
           items: _buildDropdownEntries(),
           onChanged: onChanged,
@@ -56,6 +57,9 @@ class PropertySelect extends StatelessWidget {
     onChanged(sortedOptions[index]);
   }
 }
+
+var whiteRegular =
+    TextStyle(fontFamily: 'Work Sans', color: Colors.white, fontSize: 16);
 
 class MyIconButton extends StatelessWidget {
   final IconData icon;

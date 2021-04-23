@@ -12,6 +12,11 @@ class LargeText extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
+      style: TextStyle(
+          fontFamily: 'Work Sans',
+          color: Colors.white,
+          fontSize: textSize,
+          fontWeight: !bold ? FontWeight.w200 : FontWeight.w600),
     );
   }
 }
