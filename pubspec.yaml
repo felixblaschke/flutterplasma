@@ -13,10 +13,9 @@ dependencies:
     sdk: flutter
   supercharged: ^2.0.0
   simple_animations: ^3.0.3
-  pedantic: ^1.9.2
+  pedantic: ^1.11.0
   url_strategy: ^0.2.0
   url_launcher: ^6.0.3
-  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
