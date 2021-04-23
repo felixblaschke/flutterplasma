@@ -11,7 +11,7 @@ import 'static_stars.dart';
 class Stars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var tween = _createTween();
+    final tween = _createTween();
 
     return LayoutBuilder(builder: (context, constraints) {
       return LoopAnimation<TimelineValue<_P>>(
@@ -47,7 +47,7 @@ class Stars extends StatelessWidget {
 enum _P { scale, rotate, particles }
 
 TimelineTween<_P> _createTween() {
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
 
   tween
       .addScene(

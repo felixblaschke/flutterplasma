@@ -7,7 +7,7 @@ class StaticStars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      var n = min(
+      final n = min(
           1000, (constraints.maxWidth * constraints.maxHeight / 2000).round());
 
       return CustomPaint(
@@ -20,18 +20,18 @@ class StaticStars extends StatelessWidget {
 class _Painter extends CustomPainter {
   final int n;
 
-  _Painter({this.n});
+  _Painter({required this.n});
 
   @override
   void paint(Canvas canvas, Size size) {
-    var random = Random(1);
+    final random = Random(1);
     n.times(() {
-      var position = Offset(
+      final position = Offset(
         random.nextDouble() * size.width,
         random.nextDouble() * size.height,
       );
-      var radius = 2 * random.nextDouble();
-      var paint = Paint()
+      final radius = 2 * random.nextDouble();
+      final paint = Paint()
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, 1)
         ..color = colors.pickOne(random).withOpacity(0.7 * random.nextDouble());
       canvas.drawCircle(position, radius, paint);

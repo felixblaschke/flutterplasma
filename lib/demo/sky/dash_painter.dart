@@ -22,7 +22,7 @@ ui.Image paintDash(double value) {
 
 const int _framesPerAnimationCycle = 10;
 
-List<ui.Image> _frames;
+late final List<ui.Image> _frames;
 
 const dashWidth = 500.0;
 const dashHeight = 500.0;
@@ -31,7 +31,8 @@ const dashSize = Size(dashWidth, dashHeight);
 Future<void> initializeDashPainter() async {
   final frames = <ui.Image>[];
   for (var i = 0; i < _framesPerAnimationCycle; i++) {
-    frames.add(await _paintOneFrame(i / _framesPerAnimationCycle).toImage(dashWidth.toInt(), dashHeight.toInt()));
+    frames.add(await _paintOneFrame(i / _framesPerAnimationCycle)
+        .toImage(dashWidth.toInt(), dashHeight.toInt()));
   }
   _frames = frames;
 }
@@ -70,20 +71,20 @@ ui.Picture _paintOneFrame(double value) {
       feetPaint);
 
   // Tail
-  var tailPath = Path()
+  final tailPath = Path()
     ..moveTo(dashWidth * 0.55, dashHeight * 0.6)
     ..lineTo(dashWidth * 0.75, dashHeight * 0.55)
-    ..quadraticBezierTo(dashWidth * 0.95, dashHeight * 0.55, dashWidth * 0.9,
-        dashHeight * 0.6)
-    ..quadraticBezierTo(dashWidth * 0.95, dashHeight * 0.65, dashWidth * 0.9,
-        dashHeight * 0.68)
-    ..quadraticBezierTo(dashWidth * 0.95, dashHeight * 0.75, dashWidth * 0.9,
-        dashHeight * 0.75)
+    ..quadraticBezierTo(
+        dashWidth * 0.95, dashHeight * 0.55, dashWidth * 0.9, dashHeight * 0.6)
+    ..quadraticBezierTo(
+        dashWidth * 0.95, dashHeight * 0.65, dashWidth * 0.9, dashHeight * 0.68)
+    ..quadraticBezierTo(
+        dashWidth * 0.95, dashHeight * 0.75, dashWidth * 0.9, dashHeight * 0.75)
     ..close();
   canvas.drawPath(tailPath, tailPaint);
 
   // Body
-  var bodyOval = Rect.fromCenter(
+  final bodyOval = Rect.fromCenter(
       center: dashSize.center(Offset.zero),
       width: dashWidth / (2.2 - 0.03 * value),
       height: dashHeight / (2 - 0.03 * value));
@@ -93,7 +94,7 @@ ui.Picture _paintOneFrame(double value) {
   canvas.save();
   canvas.clipPath(Path()..addOval(bodyOval));
 
-  var breastOval = Rect.fromCenter(
+  final breastOval = Rect.fromCenter(
       center: dashSize.center(Offset(-0.07 * dashWidth, 0.15 * dashHeight)),
       width: dashWidth / 3,
       height: dashHeight / 3);
@@ -112,60 +113,60 @@ ui.Picture _paintOneFrame(double value) {
       bodyPaint);
 
   // Eyes Outer
-  var leftEyeOval = Rect.fromCenter(
+  final leftEyeOval = Rect.fromCenter(
       center: dashSize.center(Offset(-0.1 * dashWidth, -0.05 * dashHeight)),
       width: dashWidth / 6,
       height: dashHeight / 5);
   canvas.drawOval(leftEyeOval, eyesOuterPaint);
 
-  var rightEyeOval = Rect.fromCenter(
+  final rightEyeOval = Rect.fromCenter(
       center: dashSize.center(Offset(0 * dashWidth, -0.05 * dashHeight)),
       width: dashWidth / 6,
       height: dashHeight / 5);
   canvas.drawOval(rightEyeOval, eyesOuterPaint);
 
   // Eyes Inner
-  var leftEyeInnerOval = Rect.fromCenter(
+  final leftEyeInnerOval = Rect.fromCenter(
       center: dashSize.center(Offset(-0.1 * dashWidth, -0.05 * dashHeight)),
       width: dashWidth / 12,
       height: dashHeight / 8);
   canvas.drawOval(leftEyeInnerOval, eyesInnerPaint);
 
-  var rightEyeInnerOval = Rect.fromCenter(
+  final rightEyeInnerOval = Rect.fromCenter(
       center: dashSize.center(Offset(0 * dashWidth, -0.05 * dashHeight)),
       width: dashWidth / 12,
       height: dashHeight / 8);
   canvas.drawOval(rightEyeInnerOval, eyesInnerPaint);
 
   // Eyes Reflection 1
-  var leftEyeReflection1Oval = Rect.fromCenter(
+  final leftEyeReflection1Oval = Rect.fromCenter(
       center: dashSize.center(Offset(-0.11 * dashWidth, -0.03 * dashHeight)),
       width: dashWidth / 50,
       height: dashHeight / 50);
   canvas.drawOval(leftEyeReflection1Oval, eyesReflectionPaint);
 
-  var rightEyeReflection1Oval = Rect.fromCenter(
+  final rightEyeReflection1Oval = Rect.fromCenter(
       center: dashSize.center(Offset(-0.01 * dashWidth, -0.03 * dashHeight)),
       width: dashWidth / 50,
       height: dashHeight / 50);
   canvas.drawOval(rightEyeReflection1Oval, eyesReflectionPaint);
 
   // Eyes Reflection 2
-  var leftEyeReflection2Oval = Rect.fromCenter(
+  final leftEyeReflection2Oval = Rect.fromCenter(
       center: dashSize.center(Offset(-0.09 * dashWidth, -0.07 * dashHeight)),
       width: dashWidth / 80,
       height: dashHeight / 80);
   canvas.drawOval(leftEyeReflection2Oval, eyesReflectionPaint);
 
-  var rightEyeReflection2Oval = Rect.fromCenter(
+  final rightEyeReflection2Oval = Rect.fromCenter(
       center: dashSize.center(Offset(0.01 * dashWidth, -0.07 * dashHeight)),
       width: dashWidth / 80,
       height: dashHeight / 80);
   canvas.drawOval(rightEyeReflection2Oval, eyesReflectionPaint);
 
   // Nose
-  var noseStart = Offset(dashWidth * 0.44, dashHeight * 0.5);
-  var nosePath = Path()
+  final noseStart = Offset(dashWidth * 0.44, dashHeight * 0.5);
+  final nosePath = Path()
     ..moveTo(noseStart.dx, noseStart.dy)
     ..lineTo(noseStart.dx - dashWidth * 0.4, noseStart.dy + dashHeight * 0.03)
     ..lineTo(noseStart.dx, noseStart.dy + 0.07 * dashHeight)
@@ -178,10 +179,10 @@ ui.Picture _paintOneFrame(double value) {
   canvas.drawPath(nosePath, nosePaint);
 
   // Right feet
-  var rightFeetStart = Offset(dashWidth * 0.62, dashHeight * 0.70);
-  var rightFeetVec =
+  final rightFeetStart = Offset(dashWidth * 0.62, dashHeight * 0.70);
+  final rightFeetVec =
       Offset(dashWidth * (0.02 + (value) * 0.015), dashHeight * 0.13);
-  var rightFeetMiddle = Offset(
+  final rightFeetMiddle = Offset(
       rightFeetStart.dx + rightFeetVec.dx, rightFeetStart.dy + rightFeetVec.dy);
   canvas.drawLine(rightFeetStart, rightFeetMiddle, feetPaint);
   canvas.drawLine(
@@ -202,28 +203,28 @@ ui.Picture _paintOneFrame(double value) {
 
   // Hair
   canvas.save();
-  var hairClipPath = Path()
+  final hairClipPath = Path()
     ..moveTo(dashWidth * 0.41, dashHeight * 0.35)
-    ..quadraticBezierTo(dashWidth * 0.5, dashHeight * 0.2, dashWidth * 0.6,
-        dashHeight * 0.3)
+    ..quadraticBezierTo(
+        dashWidth * 0.5, dashHeight * 0.2, dashWidth * 0.6, dashHeight * 0.3)
     ..lineTo(dashWidth, 0)
     ..lineTo(0, 0)
     ..close();
   canvas.clipPath(hairClipPath);
 
-  var hair1Oval = Rect.fromCenter(
+  final hair1Oval = Rect.fromCenter(
       center: dashSize.center(Offset(dashWidth * -0.05, dashHeight * -0.22)),
       width: dashWidth / 15,
       height: dashHeight / 15);
   canvas.drawOval(hair1Oval, eyesOuterPaint);
 
-  var hair2Oval = Rect.fromCenter(
+  final hair2Oval = Rect.fromCenter(
       center: dashSize.center(Offset(dashWidth * -0.01, dashHeight * -0.23)),
       width: dashWidth / 13,
       height: dashHeight / 13);
   canvas.drawOval(hair2Oval, eyesOuterPaint);
 
-  var hair3Oval = Rect.fromCenter(
+  final hair3Oval = Rect.fromCenter(
       center: dashSize.center(Offset(dashWidth * 0.02, dashHeight * -0.23)),
       width: dashWidth / 15,
       height: dashHeight / 15);
@@ -231,14 +232,15 @@ ui.Picture _paintOneFrame(double value) {
   canvas.restore();
 
   // Wing
-  var rightWing1 = Offset(dashWidth * 0.62, dashHeight * 0.52);
-  var rightWing2 = Offset(dashWidth * 0.9, dashHeight * (0.6 - 0.1 * value));
-  var rightWingC1 = Offset(
+  final rightWing1 = Offset(dashWidth * 0.62, dashHeight * 0.52);
+  final rightWing2 = Offset(dashWidth * 0.9, dashHeight * (0.6 - 0.1 * value));
+  final rightWingC1 = Offset(
     (rightWing1.dx + rightWing2.dx) / 2 + dashWidth * 0.2,
     (rightWing1.dy + rightWing2.dy) / 2 - dashHeight * 0.2,
   );
-  var rightWingC2 = Offset(rightWingC1.dx, rightWingC1.dy + dashHeight * 0.45);
-  var rightWingPath = Path()
+  final rightWingC2 =
+      Offset(rightWingC1.dx, rightWingC1.dy + dashHeight * 0.45);
+  final rightWingPath = Path()
     ..moveTo(rightWing1.dx, rightWing1.dy)
     ..quadraticBezierTo(
         rightWingC1.dx, rightWingC1.dy, rightWing2.dx, rightWing2.dy)
@@ -247,10 +249,10 @@ ui.Picture _paintOneFrame(double value) {
     ..close();
 
   canvas.save();
-  var wingClipPath = Path()
+  final wingClipPath = Path()
     ..moveTo(dashWidth * 0.68, dashHeight * 0.48)
-    ..quadraticBezierTo(dashWidth * 0.63, dashHeight * 0.53, dashWidth * 0.7,
-        dashHeight * 0.6)
+    ..quadraticBezierTo(
+        dashWidth * 0.63, dashHeight * 0.53, dashWidth * 0.7, dashHeight * 0.6)
     ..lineTo(dashWidth, dashHeight)
     ..lineTo(dashWidth, 0)
     ..close();

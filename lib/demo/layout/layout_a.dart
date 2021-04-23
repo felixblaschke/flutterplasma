@@ -12,7 +12,7 @@ class LayoutA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, outerConstraints) {
-      var gap = 0.025 * outerConstraints.maxWidth;
+      final gap = 0.025 * outerConstraints.maxWidth;
 
       return Container(
         padding: EdgeInsets.all(2 * gap),
@@ -21,7 +21,7 @@ class LayoutA extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(gap)),
         ),
         child: LayoutBuilder(builder: (context, constraints) {
-          var tween = _createTween(constraints.maxWidth, gap);
+          final tween = _createTween(constraints.maxWidth, gap);
 
           return CustomAnimation<TimelineValue<_P>>(
               control: CustomAnimationControl.LOOP,
@@ -78,26 +78,26 @@ enum _P {
 }
 
 TimelineTween<_P> _createTween(double size, double gap) {
-  var tween = TimelineTween<_P>(curve: Curves.easeInOut);
+  final tween = TimelineTween<_P>(curve: Curves.easeInOut);
   tween
       .addScene(begin: 0.seconds, duration: 1.milliseconds)
       .animate(_P.top1, tween: ConstantTween<double>(0.0))
       .animate(_P.left1, tween: ConstantTween<double>(0.0));
 
-  var step1 = tween
+  final step1 = tween
       .addScene(begin: 500.milliseconds, duration: 700.milliseconds)
       .animate(_P.width1, tween: (size * 0.5 - gap).tweenTo(size));
 
-  var step2 = step1
+  final step2 = step1
       .addSubsequentScene(delay: -300.milliseconds, duration: 700.milliseconds)
       .animate(_P.left2, tween: (0.5 * size + gap).tweenTo(0.0));
 
-  var step3 = step2
+  final step3 = step2
       .addSubsequentScene(delay: 800.milliseconds, duration: 500.milliseconds)
       .animate(_P.height1, tween: (size * 0.5 - gap).tweenTo(size * 0.2 - gap))
       .animate(_P.top2, tween: (0.5 * size + gap).tweenTo(0.2 * size + gap));
 
-  var step4 = step3
+  final step4 = step3
       .addSubsequentScene(delay: 300.milliseconds, duration: 700.milliseconds)
       .animate(_P.height2, tween: (0.5 * size - gap).tweenTo(0.8 * size - gap))
       .animate(_P.width2, tween: (0.5 * size - gap).tweenTo(size));

@@ -5,7 +5,8 @@ class GestureDetectorWithClickHover extends StatelessWidget {
   final GestureTapCallback onTap;
   final Widget child;
 
-  GestureDetectorWithClickHover({this.onTap, this.child});
+  const GestureDetectorWithClickHover(
+      {required this.onTap, required this.child});
 
   @override
   Widget build(BuildContext context) {

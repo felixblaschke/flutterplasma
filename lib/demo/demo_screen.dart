@@ -19,7 +19,7 @@ class DemoScreen extends StatefulWidget {
   final VoidCallback onComplete;
   final bool showCredits;
 
-  DemoScreen({this.onComplete, this.showCredits});
+  const DemoScreen({required this.onComplete, required this.showCredits});
 
   @override
   _DemoScreenState createState() => _DemoScreenState();
@@ -34,7 +34,7 @@ class _DemoScreenState extends State<DemoScreen> {
 
   @override
   void initState() {
-    widgets = [
+    widgets = <Widget>[
       Container(),
       Intro(),
       FancyPlasma1(),
@@ -54,7 +54,7 @@ class _DemoScreenState extends State<DemoScreen> {
       await _audioPlayer.play();
 
       while (true) {
-        var position = await _audioPlayer.position;
+        final position = await _audioPlayer.position;
         if (position > 0.seconds) {
           setState(() => control = CustomAnimationControl.PLAY_FROM_START);
           shatterFn();
@@ -70,7 +70,7 @@ class _DemoScreenState extends State<DemoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var tween = _createTween(widget.showCredits);
+    final tween = _createTween(widget.showCredits);
 
     return Scaffold(
       body: CustomAnimation<TimelineValue<_P>>(
@@ -110,43 +110,43 @@ class _DemoScreenState extends State<DemoScreen> {
 enum _P { widgetIndex }
 
 TimelineTween<_P> _createTween(bool withCredits) {
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
 
-  var intro = tween
+  final intro = tween
       .addScene(begin: 0.milliseconds, duration: 605.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(0));
 
-  var message = intro
+  final message = intro
       .addSubsequentScene(duration: MUSIC_UNIT_MS.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(1));
 
-  var plasmas = tween
+  final plasmas = tween
       .addScene(
           begin: 13068.milliseconds,
           duration: (2 * MUSIC_UNIT_MS).round().milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(2));
 
-  var layoutWall = tween
+  final layoutWall = tween
       .addScene(
           begin: 25414.milliseconds,
           duration: (2 * MUSIC_UNIT_MS).round().milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(3));
 
-  var plasmaComposition = tween
+  final plasmaComposition = tween
       .addScene(
           begin: 37728.milliseconds,
           duration: (2 * MUSIC_UNIT_MS).round().milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(4));
 
-  var sky = plasmaComposition
+  final sky = plasmaComposition
       .addSubsequentScene(duration: MUSIC_UNIT_MS.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(5));
 
-  var space = sky
+  final space = sky
       .addSubsequentScene(duration: MUSIC_UNIT_MS.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(6));
 
-  var dark = space
+  final dark = space
       .addSubsequentScene(duration: 2000.milliseconds)
       .animate(_P.widgetIndex, tween: ConstantTween<int>(7));
 
