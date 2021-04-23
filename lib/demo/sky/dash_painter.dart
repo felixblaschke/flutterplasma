@@ -22,7 +22,7 @@ ui.Image paintDash(double value) {
 
 const int _framesPerAnimationCycle = 10;
 
-List<ui.Image> _frames;
+late final List<ui.Image> _frames;
 
 const dashWidth = 500.0;
 const dashHeight = 500.0;
@@ -31,7 +31,8 @@ const dashSize = Size(dashWidth, dashHeight);
 Future<void> initializeDashPainter() async {
   final frames = <ui.Image>[];
   for (var i = 0; i < _framesPerAnimationCycle; i++) {
-    frames.add(await _paintOneFrame(i / _framesPerAnimationCycle).toImage(dashWidth.toInt(), dashHeight.toInt()));
+    frames.add(await _paintOneFrame(i / _framesPerAnimationCycle)
+        .toImage(dashWidth.toInt(), dashHeight.toInt()));
   }
   _frames = frames;
 }
@@ -73,12 +74,12 @@ ui.Picture _paintOneFrame(double value) {
   var tailPath = Path()
     ..moveTo(dashWidth * 0.55, dashHeight * 0.6)
     ..lineTo(dashWidth * 0.75, dashHeight * 0.55)
-    ..quadraticBezierTo(dashWidth * 0.95, dashHeight * 0.55, dashWidth * 0.9,
-        dashHeight * 0.6)
-    ..quadraticBezierTo(dashWidth * 0.95, dashHeight * 0.65, dashWidth * 0.9,
-        dashHeight * 0.68)
-    ..quadraticBezierTo(dashWidth * 0.95, dashHeight * 0.75, dashWidth * 0.9,
-        dashHeight * 0.75)
+    ..quadraticBezierTo(
+        dashWidth * 0.95, dashHeight * 0.55, dashWidth * 0.9, dashHeight * 0.6)
+    ..quadraticBezierTo(
+        dashWidth * 0.95, dashHeight * 0.65, dashWidth * 0.9, dashHeight * 0.68)
+    ..quadraticBezierTo(
+        dashWidth * 0.95, dashHeight * 0.75, dashWidth * 0.9, dashHeight * 0.75)
     ..close();
   canvas.drawPath(tailPath, tailPaint);
 
@@ -204,8 +205,8 @@ ui.Picture _paintOneFrame(double value) {
   canvas.save();
   var hairClipPath = Path()
     ..moveTo(dashWidth * 0.41, dashHeight * 0.35)
-    ..quadraticBezierTo(dashWidth * 0.5, dashHeight * 0.2, dashWidth * 0.6,
-        dashHeight * 0.3)
+    ..quadraticBezierTo(
+        dashWidth * 0.5, dashHeight * 0.2, dashWidth * 0.6, dashHeight * 0.3)
     ..lineTo(dashWidth, 0)
     ..lineTo(0, 0)
     ..close();
@@ -249,8 +250,8 @@ ui.Picture _paintOneFrame(double value) {
   canvas.save();
   var wingClipPath = Path()
     ..moveTo(dashWidth * 0.68, dashHeight * 0.48)
-    ..quadraticBezierTo(dashWidth * 0.63, dashHeight * 0.53, dashWidth * 0.7,
-        dashHeight * 0.6)
+    ..quadraticBezierTo(
+        dashWidth * 0.63, dashHeight * 0.53, dashWidth * 0.7, dashHeight * 0.6)
     ..lineTo(dashWidth, dashHeight)
     ..lineTo(dashWidth, 0)
     ..close();

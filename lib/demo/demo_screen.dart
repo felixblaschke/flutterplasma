@@ -19,7 +19,7 @@ class DemoScreen extends StatefulWidget {
   final VoidCallback onComplete;
   final bool showCredits;
 
-  DemoScreen({this.onComplete, this.showCredits});
+  const DemoScreen({required this.onComplete, required this.showCredits});
 
   @override
   _DemoScreenState createState() => _DemoScreenState();

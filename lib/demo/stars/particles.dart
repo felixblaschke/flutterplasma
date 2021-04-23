@@ -6,7 +6,7 @@ import 'package:supercharged/supercharged.dart';
 class ParticlesPainter extends CustomPainter {
   final double value;
 
-  ParticlesPainter({this.value});
+  ParticlesPainter({required this.value});
 
   @override
   void paint(Canvas canvas, Size size) {

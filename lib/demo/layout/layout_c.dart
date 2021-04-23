@@ -7,7 +7,7 @@ import 'colors.dart';
 class LayoutC extends StatelessWidget {
   final double start;
 
-  LayoutC({this.start = 0.0});
+  const LayoutC({this.start = 0.0});
 
   @override
   Widget build(BuildContext context) {
@@ -192,10 +192,10 @@ class LayoutC extends StatelessWidget {
     );
   }
 
-  Widget _buildTextLine(double gap, {double width}) {
+  Widget _buildTextLine(double gap, {double width = 1.0}) {
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
-        width: constraints.maxWidth * (width ?? 1.0),
+        width: constraints.maxWidth * width,
         height: gap,
         margin: EdgeInsets.only(bottom: 0.5 * gap),
         decoration: BoxDecoration(

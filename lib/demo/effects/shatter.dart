@@ -1,13 +1,15 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
 class ShatterScene extends StatefulWidget {
-  final Widget Function(BuildContext context, void Function() startScatter)
+  final Widget Function(BuildContext context, void Function() startScatter)?
       builder;
 
   ShatterScene({this.builder});
@@ -21,16 +23,16 @@ class _ShatterSceneState extends State<ShatterScene> {
 
   final _key = GlobalKey();
 
-  MemoryImage memoryImage;
+  MemoryImage? memoryImage;
 
   var useFallback = false;
 
-  List<List<Offset>> parts;
+  late List<List<Offset>> parts;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _recordImage());
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _recordImage());
   }
 
   @override
@@ -40,12 +42,12 @@ class _ShatterSceneState extends State<ShatterScene> {
         children: [
           if (memoryImage != null)
             Positioned.fill(
-              child: Opacity(opacity: 0.0, child: Image(image: memoryImage)),
+              child: Opacity(opacity: 0.0, child: Image(image: memoryImage!)),
             ),
           Positioned.fill(
             child: RepaintBoundary(
               key: _key,
-              child: widget.builder(context, _startShatter),
+              child: widget.builder!(context, _startShatter),
             ),
           ),
         ],
@@ -64,8 +66,8 @@ class _ShatterSceneState extends State<ShatterScene> {
                       points: part,
                       progress: value,
                       child: !useFallback
-                          ? Image(image: memoryImage)
-                          : widget.builder(context, () {}),
+                          ? Image(image: memoryImage!)
+                          : widget.builder!(context, () {}),
                     )))
                 .toList(),
           );
@@ -75,9 +77,10 @@ class _ShatterSceneState extends State<ShatterScene> {
   void _recordImage() async {
     try {
       var boundary =
-          _key.currentContext.findRenderObject() as RenderRepaintBoundary;
+          _key.currentContext!.findRenderObject() as RenderRepaintBoundary;
       var image = await boundary.toImage();
-      var byteData = await image.toByteData(format: ImageByteFormat.png);
+      var byteData = await (image.toByteData(format: ImageByteFormat.png)
+          as FutureOr<ByteData>);
       var imageBytes = byteData.buffer.asUint8List();
 
       setState(() {
@@ -105,9 +108,9 @@ class AnimatedShatter extends StatelessWidget {
   final Widget child;
 
   AnimatedShatter({
-    this.progress,
-    this.points,
-    this.child,
+    required this.progress,
+    required this.points,
+    required this.child,
   });
 
   @override
@@ -145,7 +148,7 @@ class AnimatedShatter extends StatelessWidget {
 class PolygonClipper extends CustomClipper<Path> {
   final List<Offset> points;
 
-  PolygonClipper({this.points});
+  PolygonClipper({required this.points});
 
   @override
   Path getClip(Size size) {
@@ -186,7 +189,7 @@ class Triangle {
   final Offset p2;
   final Offset p3;
 
-  Triangle(this.p1, this.p2, this.p3);
+  const Triangle(this.p1, this.p2, this.p3);
 
   List<Triangle> shatter(Random random) {
     var m12 = _average2(p1, p2, 0.4 + 0.2 * random.nextDouble());

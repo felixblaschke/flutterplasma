@@ -4,11 +4,12 @@ import 'package:supercharged/supercharged.dart';
 import 'gesture_detector_with_click_hover.dart';
 
 class PropertySelect extends StatelessWidget {
-  final Function(String) onChanged;
+  final Function(String?) onChanged;
   final String value;
   final List<String> options;
 
-  PropertySelect({this.onChanged, this.value, this.options});
+  PropertySelect(
+      {required this.onChanged, required this.value, required this.options});
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +60,13 @@ class PropertySelect extends StatelessWidget {
 }
 
 var whiteRegular =
-    TextStyle(fontFamily: 'Work Sans', color: Colors.white, fontSize: 16);
+    const TextStyle(fontFamily: 'Work Sans', color: Colors.white, fontSize: 16);
 
 class MyIconButton extends StatelessWidget {
   final IconData icon;
   final void Function() onPressed;
 
-  MyIconButton({this.icon, this.onPressed});
+  const MyIconButton({required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

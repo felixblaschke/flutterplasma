@@ -21,7 +21,7 @@ class ShowRoom extends StatefulWidget {
   final int index;
   final Function(int) onIndexChange;
 
-  ShowRoom({this.index, this.onIndexChange});
+  const ShowRoom({required this.index, required this.onIndexChange});
 
   @override
   _ShowRoomState createState() => _ShowRoomState();
@@ -90,7 +90,7 @@ class _ShowRoomState extends State<ShowRoom> {
                   PropertySelect(
                     value: selectedItem,
                     onChanged: (newValue) {
-                      changeWidgetInternally(newValue);
+                      changeWidgetInternally(newValue!);
                     },
                     options: WIDGETS.keys.toList(),
                   )

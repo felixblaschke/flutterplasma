@@ -3,8 +3,8 @@ import 'package:simple_animations/simple_animations.dart';
 
 class FancyPlasmaWidget2 extends StatelessWidget {
   const FancyPlasmaWidget2({
-    Key key,
-    @required this.color,
+    Key? key,
+    required this.color,
   }) : super(key: key);
 
   final Color color;
@@ -48,8 +48,8 @@ class FancyPlasmaWidget2 extends StatelessWidget {
 
 class FancyPlasmaWidget1 extends StatelessWidget {
   const FancyPlasmaWidget1({
-    Key key,
-    @required this.color,
+    Key? key,
+    required this.color,
   }) : super(key: key);
 
   final Color color;

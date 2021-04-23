@@ -7,7 +7,7 @@ import 'colors.dart';
 class LayoutB extends StatelessWidget {
   final double start;
 
-  LayoutB({this.start = 0.0});
+  const LayoutB({this.start = 0.0});
 
   @override
   Widget build(BuildContext context) {
@@ -118,11 +118,10 @@ class LayoutB extends StatelessWidget {
   }
 
   Container _buildContentContainer(double gap,
-      {Color color, double heightScale}) {
+      {Color? color, double heightScale = 1.0}) {
     return Container(
       margin: EdgeInsets.only(bottom: gap),
-      constraints:
-          BoxConstraints.expand(height: 3 * gap * (heightScale ?? 1.0)),
+      constraints: BoxConstraints.expand(height: 3 * gap * heightScale),
       decoration: BoxDecoration(
           color: color ?? grey2,
           borderRadius: BorderRadius.all(Radius.circular(0.5 * gap))),

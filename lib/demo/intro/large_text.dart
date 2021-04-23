@@ -5,7 +5,7 @@ class LargeText extends StatelessWidget {
   final bool bold;
   final double textSize;
 
-  LargeText(this.text, {@required this.textSize, this.bold = false});
+  const LargeText(this.text, {required this.textSize, this.bold = false});
 
   @override
   Widget build(BuildContext context) {

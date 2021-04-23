@@ -6,7 +6,7 @@ import '../caching_builder.dart';
 import '../intro/large_text.dart';
 
 class Outro extends StatelessWidget {
-  final VoidCallback onComplete;
+  final VoidCallback? onComplete;
 
   Outro({this.onComplete});
 
@@ -34,7 +34,7 @@ class Outro extends StatelessWidget {
         },
         animationStatusListener: (status) {
           if (status == AnimationStatus.completed) {
-            onComplete();
+            onComplete!();
           }
         },
       );
@@ -73,14 +73,15 @@ class Outro extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _buildSpacer(fontSize),
-                  _buildText(
-                      'directed by', 'Felix Blaschke\nMandy Blaschke', fontSize),
+                  _buildText('directed by', 'Felix Blaschke\nMandy Blaschke',
+                      fontSize),
                   _buildSpacer(fontSize),
                   _buildText('Artwork by', 'Mandy Blaschke', fontSize),
                   _buildSpacer(fontSize),
                   _buildText('Made with', 'Flutter', fontSize),
                   _buildSpacer(fontSize),
-                  _buildText('animation package used', 'simple_animations', fontSize),
+                  _buildText(
+                      'animation package used', 'simple_animations', fontSize),
                   _buildSpacer(fontSize),
                   _buildText('Special thanks to', 'The Flutter Team', fontSize),
                   Container(

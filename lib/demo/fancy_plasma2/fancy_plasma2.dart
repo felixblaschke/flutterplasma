@@ -66,7 +66,7 @@ class FancyPlasma2 extends StatelessWidget {
     });
   }
 
-  Widget _gradient({Widget child, TimelineValue<_P> value}) {
+  Widget _gradient({Widget? child, required TimelineValue<_P> value}) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(

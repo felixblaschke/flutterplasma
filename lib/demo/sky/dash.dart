@@ -21,7 +21,7 @@ class DashAnimation extends StatelessWidget {
 class Dash extends StatelessWidget {
   final double value;
 
-  Dash({this.value});
+  const Dash({required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ final Paint opaque = Paint()..filterQuality = FilterQuality.medium;
 class DashPainter extends CustomPainter {
   final double value;
 
-  DashPainter({this.value});
+  const DashPainter({required this.value});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -75,7 +75,7 @@ class DashPainter extends CustomPainter {
 }
 
 class MultiDashPainter extends CustomPainter {
-  MultiDashPainter(this.otherDashes, this.value);
+  const MultiDashPainter(this.otherDashes, this.value);
 
   final double otherDashes;
   final double value;

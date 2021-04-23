@@ -7,9 +7,9 @@ import 'package:flutter/widgets.dart';
 /// the [cacheKey] only when a rebuild is necessary. Typically, the cache key
 /// would consist of values used by [builder] to build the widget.
 class CachingBuilder<V> extends StatefulWidget {
-  CachingBuilder({
-    @required this.cacheKey,
-    @required this.builder,
+  const CachingBuilder({
+    required this.cacheKey,
+    required this.builder,
   });
 
   final V cacheKey;
@@ -20,17 +20,17 @@ class CachingBuilder<V> extends StatefulWidget {
 }
 
 class _CachingBuilderState<V> extends State<CachingBuilder<V>> {
-  V _lastCacheKey;
-  Widget _cachedWidget;
+  V? _lastCacheKey;
+  Widget? _cachedWidget;
 
   @override
   Widget build(BuildContext context) {
     if (_cachedWidget != null && _lastCacheKey == widget.cacheKey) {
-      return _cachedWidget;
+      return _cachedWidget!;
     } else {
       _cachedWidget = widget.builder(context);
       _lastCacheKey = widget.cacheKey;
-      return _cachedWidget;
+      return _cachedWidget!;
     }
   }
 }
