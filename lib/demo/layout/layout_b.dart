@@ -7,12 +7,12 @@ import 'colors.dart';
 class LayoutB extends StatelessWidget {
   final double start;
 
-  LayoutB({this.start = 0.0});
+  const LayoutB({this.start = 0.0});
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, outerConstraints) {
-      var gap = 0.025 * outerConstraints.maxWidth;
+      final gap = 0.025 * outerConstraints.maxWidth;
 
       return Container(
         decoration: BoxDecoration(
@@ -20,7 +20,7 @@ class LayoutB extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(gap)),
         ),
         child: LayoutBuilder(builder: (context, constraints) {
-          var tween = _createTween(constraints.maxWidth, gap);
+          final tween = _createTween(constraints.maxWidth, gap);
 
           return CustomAnimation<TimelineValue<_P>>(
               control: CustomAnimationControl.LOOP,
@@ -118,11 +118,10 @@ class LayoutB extends StatelessWidget {
   }
 
   Container _buildContentContainer(double gap,
-      {Color color, double heightScale}) {
+      {Color? color, double heightScale = 1.0}) {
     return Container(
       margin: EdgeInsets.only(bottom: gap),
-      constraints:
-          BoxConstraints.expand(height: 3 * gap * (heightScale ?? 1.0)),
+      constraints: BoxConstraints.expand(height: 3 * gap * heightScale),
       decoration: BoxDecoration(
           color: color ?? grey2,
           borderRadius: BorderRadius.all(Radius.circular(0.5 * gap))),
@@ -142,9 +141,9 @@ enum _P {
 }
 
 TimelineTween<_P> _createTween(double size, double gap) {
-  var tween = TimelineTween<_P>(curve: Curves.easeInOut);
+  final tween = TimelineTween<_P>(curve: Curves.easeInOut);
 
-  var scroll1 = tween
+  final scroll1 = tween
       .addScene(begin: 500.milliseconds, duration: 900.milliseconds)
       .animate(_P.pageScroll,
           tween: 0.0
@@ -153,23 +152,24 @@ TimelineTween<_P> _createTween(double size, double gap) {
               .curved(Curves.easeOut)
               .curved(Curves.easeOut));
 
-  var scroll2 = scroll1.addSubsequentScene(duration: 600.milliseconds).animate(
-      _P.pageScroll,
-      tween: 320.0
-          .tweenTo(400.0)
-          .curved(Curves.easeOut)
-          .curved(Curves.easeOut)
-          .curved(Curves.easeOut));
+  final scroll2 = scroll1
+      .addSubsequentScene(duration: 600.milliseconds)
+      .animate(_P.pageScroll,
+          tween: 320.0
+              .tweenTo(400.0)
+              .curved(Curves.easeOut)
+              .curved(Curves.easeOut)
+              .curved(Curves.easeOut));
 
-  var clickIn = scroll2
+  final clickIn = scroll2
       .addSubsequentScene(delay: 300.milliseconds, duration: 100.milliseconds)
       .animate(_P.contentColor, tween: grey2.tweenTo(grey3));
 
-  var clickOut = clickIn
+  final clickOut = clickIn
       .addSubsequentScene(duration: 100.milliseconds)
       .animate(_P.contentColor, tween: grey3.tweenTo(grey2));
 
-  var focus = clickOut
+  final focus = clickOut
       .addSubsequentScene(delay: 100.milliseconds, duration: 1200.milliseconds)
       .animate(_P.left1, tween: (2 * gap).tweenTo(0.0))
       .animate(_P.top1, tween: (2 * gap).tweenTo(0.0))
@@ -180,7 +180,7 @@ TimelineTween<_P> _createTween(double size, double gap) {
       .animate(_P.contentColor, tween: grey2.tweenTo(grey4))
       .animate(_P.pageScroll, tween: 400.0.tweenTo(600.0));
 
-  var fadeBack = focus
+  final fadeBack = focus
       .addSubsequentScene(delay: 1.seconds, duration: 1200.milliseconds)
       .animate(_P.left1, tween: (0.0).tweenTo(2 * gap))
       .animate(_P.top1, tween: (0.0).tweenTo(2 * gap))

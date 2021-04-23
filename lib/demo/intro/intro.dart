@@ -11,12 +11,12 @@ class Intro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      var tween = _createTween(constraints);
+      final tween = _createTween(constraints);
       return PlayAnimation<TimelineValue<_P>>(
           tween: tween,
           duration: tween.duration,
           builder: (context, child, value) {
-            var textFadeOut = value.get<double>(_P.textFadeOut);
+            final textFadeOut = value.get<double>(_P.textFadeOut);
 
             return Opacity(
               opacity: value.get(_P.sceneOpacity),
@@ -75,13 +75,13 @@ class Intro extends StatelessWidget {
   }
 
   Container _buildText(BoxConstraints constraints, TimelineValue<_P> value) {
-    var size = Size(constraints.maxWidth / 2,
+    final size = Size(constraints.maxWidth / 2,
         min(constraints.maxHeight / 3, constraints.maxWidth / 3));
-    var textSize = size.width * 0.1;
+    final textSize = size.width * 0.1;
 
-    var t1fade = value.get<double>(_P.t1fade);
-    var t2fade = value.get<double>(_P.t2fade);
-    var t3fade = value.get<double>(_P.t3fade);
+    final t1fade = value.get<double>(_P.t1fade);
+    final t2fade = value.get<double>(_P.t2fade);
+    final t3fade = value.get<double>(_P.t3fade);
 
     return Container(
       width: size.width,
@@ -137,13 +137,13 @@ enum _P {
 }
 
 TimelineTween<_P> _createTween(BoxConstraints constraints) {
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
 
-  var fadeIn = tween
+  final fadeIn = tween
       .addScene(begin: 0.milliseconds, end: 800.milliseconds)
       .animate(_P.sceneOpacity, tween: 0.0.tweenTo(1.0));
 
-  var t1 = tween
+  final t1 = tween
       .addScene(
         end: 1738.milliseconds,
         duration: 600.milliseconds,
@@ -151,7 +151,7 @@ TimelineTween<_P> _createTween(BoxConstraints constraints) {
       )
       .animate(_P.t1fade, tween: (0.0).tweenTo(1.0));
 
-  var t2 = t1
+  final t2 = t1
       .addSubsequentScene(
         delay: 300.milliseconds,
         duration: 600.milliseconds,
@@ -159,7 +159,7 @@ TimelineTween<_P> _createTween(BoxConstraints constraints) {
       )
       .animate(_P.t2fade, tween: (0.0).tweenTo(1.0));
 
-  var t3 = t2
+  final t3 = t2
       .addSubsequentScene(
         delay: 300.milliseconds,
         duration: 600.milliseconds,
@@ -206,7 +206,7 @@ class _CustomExponentialCurve extends Curve {
   @override
   double transformInternal(double t) {
     var scale = 1.0;
-    const easeInPortion  = 0.6;
+    const easeInPortion = 0.6;
     if (t < easeInPortion) {
       scale = Curves.easeInOut.transform(t * (1 / easeInPortion));
     }

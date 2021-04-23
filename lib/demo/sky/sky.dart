@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
@@ -10,7 +8,7 @@ import 'dash.dart';
 class Sky extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var tween = _createTween();
+    final tween = _createTween();
 
     return LayoutBuilder(builder: (context, constraints) {
       return LoopAnimation<TimelineValue<_P>>(
@@ -23,7 +21,8 @@ class Sky extends StatelessWidget {
               children: [
                 Positioned.fill(child: SkyGradient()),
                 Positioned.fill(child: CloudsPlasma()),
-                if (otherDashes > 0) Positioned.fill(child: OtherDashes(otherDashes)),
+                if (otherDashes > 0)
+                  Positioned.fill(child: OtherDashes(otherDashes)),
                 Positioned(
                   left: value.get<double>(_P.left1) * constraints.maxWidth,
                   top: value.get<double>(_P.top1) * constraints.maxHeight,
@@ -61,7 +60,7 @@ class OtherDashes extends StatelessWidget {
 enum _P { left1, top1, size1, rotate1, otherDashes }
 
 TimelineTween<_P> _createTween() {
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
 
   tween
       .addScene(
@@ -99,7 +98,7 @@ TimelineTween<_P> _createTween() {
       )
       .animate(_P.otherDashes, tween: (0.0).tweenTo(1.0));
 
-  var fallIntoSwarm = tween
+  final fallIntoSwarm = tween
       .addScene(
         begin: (0.75 * MUSIC_UNIT_MS).round().milliseconds,
         end: (0.83 * MUSIC_UNIT_MS).round().milliseconds,

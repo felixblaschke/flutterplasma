@@ -14,8 +14,8 @@ class LayoutWall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      var size = Size(constraints.maxWidth, constraints.maxHeight);
-      var tween = _createTween(size);
+      final size = Size(constraints.maxWidth, constraints.maxHeight);
+      final tween = _createTween(size);
 
       return PlayAnimation<TimelineValue<_P>>(
           tween: tween,
@@ -53,14 +53,15 @@ class LayoutWall extends StatelessWidget {
   }
 
   List<Widget> _createGrid(BuildContext context, Size size) {
-    var random = Random(1);
+    final random = Random(1);
 
-    var grid = <Widget>[];
+    final grid = <Widget>[];
 
-    var itemSize = size.width > size.height ? size.width / 4 : size.height / 4;
+    final itemSize =
+        size.width > size.height ? size.width / 4 : size.height / 4;
 
-    var itemsX = (size.width / itemSize).ceil();
-    var itemsY = (size.height / itemSize).ceil();
+    final itemsX = (size.width / itemSize).ceil();
+    final itemsY = (size.height / itemSize).ceil();
 
     0.until(itemsY).forEach((y) {
       0.until(itemsX).forEach((x) {
@@ -87,9 +88,9 @@ class LayoutWall extends StatelessWidget {
 enum _P { scale, translateX, translateY, rotateX, rotateY }
 
 TimelineTween<_P> _createTween(Size size) {
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
 
-  var shift1 = size.width / 3 * 0.585;
+  final shift1 = size.width / 3 * 0.585;
 
   tween
       .addScene(begin: 0.milliseconds, duration: MUSIC_UNIT_MS.milliseconds)

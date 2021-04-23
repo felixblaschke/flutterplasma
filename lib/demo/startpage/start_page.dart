@@ -8,7 +8,7 @@ import '../intro/large_text.dart';
 class StartPage extends StatelessWidget {
   final Function() pressedStart;
 
-  StartPage({this.pressedStart});
+  const StartPage({required this.pressedStart});
 
   @override
   Widget build(BuildContext context) {
@@ -80,22 +80,22 @@ class StartPage extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           child: GestureDetectorWithClickHover(
+            onTap: pressedStart,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text('Play demo', style: link()),
             ),
-            onTap: pressedStart,
           ),
         ),
         Spacer(),
         Container(
           alignment: Alignment.center,
           child: GestureDetectorWithClickHover(
+            onTap: viewSourceCode,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('View source code', style: link()),
             ),
-            onTap: viewSourceCode,
           ),
         )
       ],
@@ -147,7 +147,7 @@ class StartPage extends StatelessWidget {
 class _Li extends StatelessWidget {
   final Widget child;
 
-  _Li({this.child});
+  const _Li({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +179,7 @@ class _Li extends StatelessWidget {
 class _Background extends StatelessWidget {
   final Widget child;
 
-  _Background({this.child});
+  const _Background({required this.child});
 
   @override
   Widget build(BuildContext context) {
