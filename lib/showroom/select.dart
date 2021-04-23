@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supercharged/supercharged.dart';
 
 import 'gesture_detector_with_click_hover.dart';
@@ -17,7 +16,6 @@ class PropertySelect extends StatelessWidget {
       children: [
         DropdownButton<String>(
           value: value,
-          style: whiteRegular,
           dropdownColor: '#555555'.toColor(),
           items: _buildDropdownEntries(),
           onChanged: onChanged,
@@ -58,8 +56,6 @@ class PropertySelect extends StatelessWidget {
     onChanged(sortedOptions[index]);
   }
 }
-
-var whiteRegular = GoogleFonts.workSans(color: Colors.white, fontSize: 16);
 
 class MyIconButton extends StatelessWidget {
   final IconData icon;

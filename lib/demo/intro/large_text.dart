@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LargeText extends StatelessWidget {
   final String text;
@@ -13,10 +12,6 @@ class LargeText extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: GoogleFonts.workSans(
-          color: Colors.white,
-          fontSize: textSize,
-          fontWeight: !bold ? FontWeight.w200 : FontWeight.w600),
     );
   }
 }
