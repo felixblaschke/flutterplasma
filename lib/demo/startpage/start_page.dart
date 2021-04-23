@@ -80,22 +80,22 @@ class StartPage extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           child: GestureDetectorWithClickHover(
+            onTap: pressedStart,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text('Play demo', style: link()),
             ),
-            onTap: pressedStart,
           ),
         ),
         Spacer(),
         Container(
           alignment: Alignment.center,
           child: GestureDetectorWithClickHover(
+            onTap: viewSourceCode,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('View source code', style: link()),
             ),
-            onTap: viewSourceCode,
           ),
         )
       ],

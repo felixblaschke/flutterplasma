@@ -7,10 +7,10 @@ import '../demo_screen.dart';
 class FancyPlasma2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var tween = _createTween();
+    final tween = _createTween();
 
     return LayoutBuilder(builder: (context, constraints) {
-      var ratio = constraints.maxWidth / constraints.maxHeight;
+      final ratio = constraints.maxWidth / constraints.maxHeight;
 
       return MirrorAnimation<TimelineValue<_P>>(
           tween: tween,
@@ -94,7 +94,7 @@ enum _P { scale, gradient1, gradient2 }
 TimelineTween<_P> _createTween() {
   // TODO change colors in 2nd unit on each beat (3 color changes)
 
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
   tween
       .addScene(
         begin: (0.5 * MUSIC_UNIT_MS).round().milliseconds,
@@ -103,14 +103,14 @@ TimelineTween<_P> _createTween() {
       )
       .animate(_P.scale, tween: (0.5).tweenTo(1.0));
 
-  var purple1 = Color(0xff743496);
-  var purple2 = Color(0xff31083b);
-  var green1 = Color(0xff1CAB12);
-  var green2 = Color(0xff095903);
-  var red1 = Color(0xffCC2C08);
-  var red2 = Color(0xff761802);
-  var pink1 = Color(0xffC41091);
-  var pink2 = Color(0xff760252);
+  final purple1 = Color(0xff743496);
+  final purple2 = Color(0xff31083b);
+  final green1 = Color(0xff1CAB12);
+  final green2 = Color(0xff095903);
+  final red1 = Color(0xffCC2C08);
+  final red2 = Color(0xff761802);
+  final pink1 = Color(0xffC41091);
+  final pink2 = Color(0xff760252);
 
   tween
       .addScene(

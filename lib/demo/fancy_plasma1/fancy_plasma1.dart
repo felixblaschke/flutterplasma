@@ -10,19 +10,19 @@ import 'other_plasma2.dart';
 class FancyPlasma1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var tween = _createTween();
+    final tween = _createTween();
 
     return LayoutBuilder(builder: (context, constraints) {
-      var ratio = constraints.maxWidth / constraints.maxHeight;
+      final ratio = constraints.maxWidth / constraints.maxHeight;
 
       return PlayAnimation<TimelineValue<_P>>(
           tween: tween,
           duration: tween.duration,
           builder: (context, child, value) {
-            var p1Scale = value.get<double>(_P.p1Scale);
-            var p2Scale = value.get<double>(_P.p2Scale);
+            final p1Scale = value.get<double>(_P.p1Scale);
+            final p2Scale = value.get<double>(_P.p2Scale);
 
-            var p2 = Positioned.fill(
+            final p2 = Positioned.fill(
               key: Key('p2'),
               child: Transform.scale(
                   alignment: Alignment.topLeft,
@@ -33,7 +33,7 @@ class FancyPlasma1 extends StatelessWidget {
                   )),
             );
 
-            var stackWidgets = <Widget>[
+            final stackWidgets = <Widget>[
               if (p1Scale < 1 || p2Scale < 1)
                 Positioned.fill(
                   key: Key('p3'),
@@ -95,12 +95,12 @@ class FancyPlasma1 extends StatelessWidget {
 enum _P { p1Scale, p2Scale, p1Color, p2Color }
 
 TimelineTween<_P> _createTween() {
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
 
-  var red = Colors.red.withOpacity(0.4);
-  var blue = Colors.blue.withOpacity(0.4);
-  var yellow = Colors.yellow.shade800.withOpacity(0.4);
-  var green = Colors.green.shade500.withOpacity(0.4);
+  final red = Colors.red.withOpacity(0.4);
+  final blue = Colors.blue.withOpacity(0.4);
+  final yellow = Colors.yellow.shade800.withOpacity(0.4);
+  final green = Colors.green.shade500.withOpacity(0.4);
 
   // B1 -> B2
   tween

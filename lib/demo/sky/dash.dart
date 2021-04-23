@@ -82,8 +82,8 @@ class MultiDashPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var random = Random(18);
-    var randomAngle = Random(16);
+    final random = Random(18);
+    final randomAngle = Random(16);
 
     const dashCount = 20;
     final rstTransforms = Float32List(4 * dashCount);

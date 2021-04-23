@@ -12,7 +12,7 @@ class LayoutC extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, outerConstraints) {
-      var gap = 0.025 * outerConstraints.maxWidth;
+      final gap = 0.025 * outerConstraints.maxWidth;
 
       return Container(
         decoration: BoxDecoration(
@@ -20,8 +20,8 @@ class LayoutC extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(gap)),
         ),
         child: LayoutBuilder(builder: (context, constraints) {
-          var size = constraints.maxWidth;
-          var tween = _createTween(size, gap);
+          final size = constraints.maxWidth;
+          final tween = _createTween(size, gap);
 
           return CustomAnimation<TimelineValue<_P>>(
               control: CustomAnimationControl.LOOP,
@@ -104,8 +104,8 @@ class LayoutC extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(gap)),
         ),
         child: LayoutBuilder(builder: (context, constraints) {
-          var size = constraints.maxWidth;
-          var gap2 = 0.025 * size;
+          final size = constraints.maxWidth;
+          final gap2 = 0.025 * size;
           return Stack(
             children: [
               if (value.get<double>(_P.opacity2) > 0)
@@ -225,17 +225,17 @@ enum _P {
 }
 
 TimelineTween<_P> _createTween(double size, double gap) {
-  var tween = TimelineTween<_P>(curve: Curves.easeInOut);
+  final tween = TimelineTween<_P>(curve: Curves.easeInOut);
 
-  var clickIn = tween
+  final clickIn = tween
       .addScene(begin: 500.milliseconds, duration: 100.milliseconds)
       .animate(_P.color1, tween: (grey2).tweenTo(grey3));
 
-  var clickOut = clickIn
+  final clickOut = clickIn
       .addSubsequentScene(duration: 100.milliseconds)
       .animate(_P.color1, tween: (grey3).tweenTo(grey2));
 
-  var growSide = clickOut
+  final growSide = clickOut
       .addSubsequentScene(delay: 100.milliseconds, duration: 700.milliseconds)
       .animate(_P.left1, tween: ((size - 0.25 * size) / 2).tweenTo(0.0))
       .animate(_P.width1, tween: (0.25 * size).tweenTo(size))
@@ -250,7 +250,7 @@ TimelineTween<_P> _createTween(double size, double gap) {
       .addSubsequentScene(delay: -480.milliseconds, duration: 300.milliseconds)
       .animate(_P.push, tween: (0.0).tweenTo(size), curve: Curves.easeIn);
 
-  var openPage = clickOut
+  final openPage = clickOut
       .addSubsequentScene(delay: 100.milliseconds, duration: 700.milliseconds)
       .animate(_P.left2, tween: (gap).tweenTo(0.0))
       .animate(_P.top2, tween: (gap).tweenTo(0.0))
@@ -263,7 +263,7 @@ TimelineTween<_P> _createTween(double size, double gap) {
           shiftEnd: 200.milliseconds)
       .animate(_P.color2, tween: (grey4).tweenTo(grey3));
 
-  var scroll = openPage
+  final scroll = openPage
       .addSubsequentScene(delay: 500.milliseconds, duration: 900.milliseconds)
       .animate(_P.scroll2,
           tween: (0.0)

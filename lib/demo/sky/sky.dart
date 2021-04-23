@@ -8,7 +8,7 @@ import 'dash.dart';
 class Sky extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var tween = _createTween();
+    final tween = _createTween();
 
     return LayoutBuilder(builder: (context, constraints) {
       return LoopAnimation<TimelineValue<_P>>(
@@ -60,7 +60,7 @@ class OtherDashes extends StatelessWidget {
 enum _P { left1, top1, size1, rotate1, otherDashes }
 
 TimelineTween<_P> _createTween() {
-  var tween = TimelineTween<_P>();
+  final tween = TimelineTween<_P>();
 
   tween
       .addScene(
@@ -98,7 +98,7 @@ TimelineTween<_P> _createTween() {
       )
       .animate(_P.otherDashes, tween: (0.0).tweenTo(1.0));
 
-  var fallIntoSwarm = tween
+  final fallIntoSwarm = tween
       .addScene(
         begin: (0.75 * MUSIC_UNIT_MS).round().milliseconds,
         end: (0.83 * MUSIC_UNIT_MS).round().milliseconds,

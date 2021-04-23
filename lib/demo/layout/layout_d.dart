@@ -12,7 +12,7 @@ class LayoutD extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, outerConstraints) {
-      var gap = 0.025 * outerConstraints.maxWidth;
+      final gap = 0.025 * outerConstraints.maxWidth;
 
       return Container(
         decoration: BoxDecoration(
@@ -20,9 +20,9 @@ class LayoutD extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(gap)),
         ),
         child: LayoutBuilder(builder: (context, constraints) {
-          var size = constraints.maxWidth;
-          var boxSize = (size - 6 * gap) / 3.0;
-          var tween = _createTween(size, gap);
+          final size = constraints.maxWidth;
+          final boxSize = (size - 6 * gap) / 3.0;
+          final tween = _createTween(size, gap);
 
           return CustomAnimation<TimelineValue<_P>>(
               control: CustomAnimationControl.LOOP,
@@ -30,7 +30,7 @@ class LayoutD extends StatelessWidget {
               tween: tween,
               duration: tween.duration,
               builder: (context, child, value) {
-                var shiftY = value.get<double>(_P.shiftY);
+                final shiftY = value.get<double>(_P.shiftY);
 
                 return Stack(
                   children: [
@@ -107,7 +107,7 @@ class LayoutD extends StatelessWidget {
 
   Positioned _buildAnimatedContainer(
       {required double gap, required TimelineValue<_P> value}) {
-    var videoOpacity = value.get<double>(_P.videoOpacity);
+    final videoOpacity = value.get<double>(_P.videoOpacity);
 
     return Positioned(
         left: value.get(_P.left1),
@@ -176,26 +176,26 @@ enum _P {
 }
 
 TimelineTween<_P> _createTween(double size, double gap) {
-  var boxSize = (size - 6 * gap) / 3.0;
+  final boxSize = (size - 6 * gap) / 3.0;
 
-  var tween = TimelineTween<_P>(curve: Curves.easeInOut);
+  final tween = TimelineTween<_P>(curve: Curves.easeInOut);
 
-  var clickIn = tween
+  final clickIn = tween
       .addScene(begin: 500.milliseconds, duration: 100.milliseconds)
       .animate(_P.playOpacity, tween: (1.0).tweenTo(0.0))
       .animate(_P.color1, tween: (grey2).tweenTo(grey3));
 
   // ignore: unused_local_variable
-  var clickOut = clickIn
+  final clickOut = clickIn
       .addSubsequentScene(duration: 100.milliseconds)
       .animate(_P.color1, tween: (grey3).tweenTo(grey2));
 
-  var createSpace = clickIn
+  final createSpace = clickIn
       .addSubsequentScene(duration: 400.milliseconds)
       .animate(_P.shiftY, tween: (0.0).tweenTo(boxSize * 2))
       .animate(_P.height1, tween: (boxSize).tweenTo(boxSize * 2 - gap));
 
-  var open = createSpace
+  final open = createSpace
       .addSubsequentScene(delay: 0.milliseconds, duration: 300.milliseconds)
       .animate(_P.left1, tween: (4 * gap + 2 * boxSize).tweenTo(0.0))
       .animate(_P.top1, tween: ConstantTween<double>(3 * gap + boxSize))
@@ -208,7 +208,7 @@ TimelineTween<_P> _createTween(double size, double gap) {
       .animate(_P.videoOpacity, tween: (0.0).tweenTo(1.0));
 
   // ignore: unused_local_variable
-  var close = open
+  final close = open
       .addSubsequentScene(delay: 2000.milliseconds, duration: 300.milliseconds)
       .animate(_P.videoOpacity, tween: (1.0).tweenTo(0.0))
       .animate(_P.left1, tween: (0.0).tweenTo(4 * gap + 2 * boxSize))
