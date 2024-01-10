@@ -2,8 +2,6 @@
 
 Flutter app demonstrating Flutter web rendering.
 
-URL: https://flutterplasma.dev
-
 ## Routes
 
 - `/`: Default demo
@@ -12,6 +10,6 @@ URL: https://flutterplasma.dev
 - `/showroom/:index`: Jump to specific Show Room example
 
 Example: 
-- https://flutterplasma.dev/nocredits
-- https://flutterplasma.dev/showroom
-- https://flutterplasma.dev/showroom/5
+- https://hostname/nocredits
+- https://hostname/showroom
+- https://hostname/showroom/5
